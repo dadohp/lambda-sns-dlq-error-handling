@@ -1,10 +1,10 @@
 {
   "name": "lambda-sns-dlq-error-handling",
   "version": "0.0.1",
-  "description": "",
+  "description": "<img src=\"https://raw.githubusercontent.com/adnanrahic/cdn/master/trigger-lambda-sns/sls-aws-lambda-sns3.png\" width=\"100%\">",
   "main": "handler.js",
   "dependencies": {
-    "serverless-pseudo-parameters": "^2.2.0"
+    "serverless-pseudo-parameters": "^2.5.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -12,5 +12,13 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dadohp/lambda-sns-dlq-error-handling.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dadohp/lambda-sns-dlq-error-handling/issues"
+  },
+  "homepage": "https://github.com/dadohp/lambda-sns-dlq-error-handling#readme"
 }

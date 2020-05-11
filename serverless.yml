@@ -8,11 +8,12 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
   stage: dev
-  region: eu-central-1
+  region: us-east-2
   profile: ${self:custom.secrets.profile, 'dev'}
   memorySize: 128
+  timeout: 120
   environment:
     accountId: '#{AWS::AccountId}'
     region: ${self:provider.region}
@@ -21,6 +22,16 @@ provider:
       Resource: "*"
       Action:
         - "sns:*"
+  deploymentBucket:
+    name: hello-world-bsd
+  vpc:
+    securityGroupIds:
+      - sg-02de584e4e265c632
+    subnetIds:
+      - subnet-034d95c435607dd99
+      - subnet-0dba1689e649c0b60
+  stackTags:
+    Billing: "ohio"
 
 functions:
   init:
@@ -30,6 +41,7 @@ functions:
           path: init
           method: post
           cors: true
+  
   calculate:
     handler: calculate.handler
     events:
@@ -39,7 +51,12 @@ functions:
     handler: error.handler
     events:
       - sns: dlq-topic
-    
+  
+    tags:
+      Project: hello-world-bsd
+      Framework: "serverless.yml"
+      Billing: "ohio"
+
 # TODO - ADD SQS QUEUE
 # resources:
 #   Resources:
