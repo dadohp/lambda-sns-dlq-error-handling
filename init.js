@@ -1,7 +1,7 @@
 'use strict'
 
 const aws = require('aws-sdk')
-const sns = new aws.SNS({ region: 'eu-central-1' })
+const sns = new aws.SNS({ region: 'us-east-2' })
 
 function generateResponse (code, payload) {
   console.log(payload)
